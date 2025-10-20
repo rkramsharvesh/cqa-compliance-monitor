@@ -1,7 +1,7 @@
 import streamlit as st
 from utils.compliance import check_compliance
 
-st.title("Compliance Dashboard")
+st.title("Dashboard")
 
 # Check for uploaded data in session state
 if "positions_df" not in st.session_state:
