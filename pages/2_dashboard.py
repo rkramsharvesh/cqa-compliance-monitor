@@ -3,6 +3,16 @@ from utils.compliance import check_compliance
 
 st.title("Dashboard")
 
+def violation_icon(status):
+    if status == "Major":
+        return '<span style="color:#d32f2f;font-weight:bold;font-size:1.1em;">&#10060; Major Violation</span>'
+    elif status == "Minor":
+        return '<span style="color:#fbc02d;font-weight:bold;font-size:1.1em;">&#9888;&#65039; Minor Violation</span>'
+    elif status == "Compliant":
+        return '<span style="color:#388e3c;font-weight:bold;font-size:1.1em;">&#9989; Compliant</span>'
+    else:
+        return status
+
 # Check for uploaded data in session state
 if "positions_df" not in st.session_state:
     st.warning("Please upload your StockTrak data on the Upload page first.")
@@ -33,7 +43,15 @@ names = {
 }
 
 for key in compliance_keys:
-    st.write(f"{names[key]}: **{status[key]} violation**" if status[key] != "Compliant" else f"{names[key]}: Compliant")
+    s = status[key]
+    if s == "Major":
+        st.markdown(f"**{names[key]}:** {violation_icon('Major')}", unsafe_allow_html=True)
+    elif s == "Minor":
+        st.markdown(f"**{names[key]}:** {violation_icon('Minor')}", unsafe_allow_html=True)
+    elif s == "Compliant":
+        st.markdown(f"**{names[key]}:** {violation_icon('Compliant')}", unsafe_allow_html=True)
+    else:
+        st.write(f"{names[key]}: {s}")
 
 if status.get("major_weights", []):
     st.subheader("Major Position Weight Violations")
