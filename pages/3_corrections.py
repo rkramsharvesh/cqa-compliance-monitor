@@ -2,7 +2,7 @@ import streamlit as st
 from utils.compliance import check_compliance
 from utils.corrections import generate_corrections
 
-st.title("Correction Recommendations")
+st.title("Correction")
 
 if "positions_df" not in st.session_state:
     st.warning("Please upload and validate your StockTrak data on the Upload page.")
