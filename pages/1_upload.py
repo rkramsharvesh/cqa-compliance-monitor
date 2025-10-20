@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.title("Upload StockTrak Export")
+st.title("Upload")
 
 st.write("""
 Upload your StockTrak open positions file (CSV or XLSX).
