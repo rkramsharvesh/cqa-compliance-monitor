@@ -3,7 +3,7 @@ import pandas as pd
 from utils.compliance import check_compliance
 import io
 
-st.title("Reports & Download")
+st.title("Reports")
 
 if "positions_df" not in st.session_state:
     st.warning("Please upload and validate your StockTrak data on the Upload page.")
